@@ -1,0 +1,89 @@
+<div class="question-container">
+  <form
+    [formGroup]="questionForm"
+    (keyup)="onFormChange()"
+    (click)="onFormChange()"
+  >
+    <h4>{{ questionType[question.type] | translate }}</h4>
+    <mat-form-field appearance="outline" class="question-text">
+      <mat-label>{{ "questionText" | translate }}...</mat-label>
+      <input matInput formControlName="questionText" />
+    </mat-form-field>
+    <div class="difficult">
+      @if(question.type == questionType.singleSelecet || question.type ==
+      questionType.multiSelecet){
+      <button mat-button type="button" (click)="addChoice()">
+        <fa-icon [icon]="faSolid.faPlus"></fa-icon>
+        {{ "newChoice" | translate }}
+      </button>
+      }
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="difficult"
+      >
+        <mat-radio-button [value]="questionDifficult.easy">{{
+          "easy" | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="questionDifficult.normal">{{
+          "normal" | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="questionDifficult.hard">{{
+          "hard" | translate
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    @if(question.type == questionType.singleSelecet || question.type ==
+    questionType.multiSelecet){
+
+    <div class="choice-container" formArrayName="choices">
+      <div class="choice-select-container">
+        <div class="choice-input-container">
+          @for (choice of choices.controls; track $index) {
+          <div class="choice-form" [formGroupName]="$index">
+            <mat-form-field appearance="outline" class="choice-input">
+              <mat-label>{{ "answer" | translate }}...</mat-label>
+              <input matInput formControlName="title" />
+            </mat-form-field>
+            @if (question.type == questionType.multiSelecet) {
+            <mat-checkbox class="choice-checkbox" formControlName="isCorrect">{{
+              "selectAsValidAnswer" | translate
+            }}</mat-checkbox>
+            }
+          </div>
+          }
+        </div>
+        @if(question.type == questionType.singleSelecet){
+        <mat-radio-group
+          [(ngModel)]="radioValue"
+          [ngModelOptions]="{ standalone: true }"
+          class="choice-radio-container"
+        >
+          @for (choice of choices.controls; track $index) {
+          <div class="choice-radio">
+            <mat-radio-button
+              [value]="$index"
+              (change)="onRadioChange($event)"
+              >{{ "selectAsValidAnswer" | translate }}</mat-radio-button
+            >
+          </div>
+          }
+        </mat-radio-group>
+        }
+      </div>
+    </div>
+    }
+  </form>
+  <div class="action-container">
+    <button mat-button type="button" class="solid-primary">
+      {{ "saveAsArchive" | translate }}
+    </button>
+    <button
+      mat-button
+      type="button"
+      (click)="questionService.removeQuestionByIndex(index)"
+    >
+      {{ "cancle" | translate }}
+    </button>
+  </div>
+</div>

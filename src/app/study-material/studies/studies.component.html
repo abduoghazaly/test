@@ -1,0 +1,38 @@
+<div class="studies-container">
+  <h1 class="page-label">{{ "materials" | translate }}</h1>
+
+  <mat-grid-list cols="2" rowHeight="350px">
+    @for (study of studies() ; track $index) {
+    <mat-grid-tile>
+      <div class="study-container">
+        <div
+          class="study-image"
+          [ngStyle]="{ 'background-image': 'url(' + study.image + ')' }"
+        ></div>
+        <div class="study-content">
+          <h2 class="study-title">{{ study.name }}</h2>
+          <p class="study-des">{{ study.description }}</p>
+          <div class="study-status">
+            {{ "status" | translate }}:
+            <span
+              class="study-status-state"
+              [ngClass]="{
+                complete: study.status == 'مكتمل',
+                incomplete: study.status == 'غير مكتمل'
+              }"
+            >
+              {{ study.status }}
+            </span>
+          </div>
+          <button mat-button>
+            <div class="study-add-exercise">
+              {{ "addExercise" | translate }}
+              <fa-icon [icon]="faSolid.faArrowLeft"></fa-icon>
+            </div>
+          </button>
+        </div>
+      </div>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+</div>

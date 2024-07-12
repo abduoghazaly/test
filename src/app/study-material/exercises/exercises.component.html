@@ -1,0 +1,53 @@
+<div class="exercises-container">
+  <div
+    class="exercises-type-container"
+    cdkDropList
+    #exerciseType="cdkDropList"
+    [cdkDropListConnectedTo]="[exerciseDrop]"
+    [cdkDropListSortingDisabled]="true"
+  >
+    <div class="exercise-type active">
+      {{ "pullQuestionType" | translate }}
+    </div>
+
+    <div
+      class="exercise-type"
+      cdkDrag
+      cdkDragBoundary=".exercises-container"
+      [cdkDragData]="questionType.multiSelecet"
+    >
+      {{ "multiSelecet" | translate }}
+    </div>
+    <div
+      class="exercise-type"
+      cdkDrag
+      cdkDragBoundary=".exercises-container"
+      [cdkDragData]="questionType.singleSelecet"
+    >
+      {{ "singleSelecet" | translate }}
+    </div>
+    <div
+      class="exercise-type"
+      cdkDrag
+      cdkDragBoundary=".exercises-container"
+      [cdkDragData]="questionType.text"
+    >
+      {{ "text" | translate }}
+    </div>
+  </div>
+  <div class="exercises-questions-container">
+    <div
+      class="exercises-drop-container"
+      cdkDropList
+      #exerciseDrop="cdkDropList"
+      [cdkDropListConnectedTo]="[exerciseType]"
+      (cdkDropListDropped)="onDrop($event)"
+    >
+      {{ "drapQuestionTypeAndDropHere" | translate }}..
+    </div>
+    @for (question of questionList(); track $index) {
+    <app-question [question]="question" [index]="$index"></app-question>
+
+    }
+  </div>
+</div>

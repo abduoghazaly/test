@@ -1,0 +1,21 @@
+<mat-tab-group>
+  <mat-tab label="studyMaterials">
+    <ng-template mat-tab-label>
+      <div class="tab-label">
+        <fa-icon [icon]="faRegular.faFileLines" class="tab-icon"></fa-icon>
+        {{ "studyMaterials" | translate }}
+      </div>
+    </ng-template>
+
+    <app-studies></app-studies>
+  </mat-tab>
+  <mat-tab label="exercises">
+    <ng-template mat-tab-label>
+      <div class="tab-label">
+        <fa-icon [icon]="faRegular.faFileLines" class="tab-icon"></fa-icon>
+        {{ "exercises" | translate }}
+      </div>
+    </ng-template>
+    <app-exercises></app-exercises>
+  </mat-tab>
+</mat-tab-group>

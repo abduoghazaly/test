@@ -1,0 +1,36 @@
+<div class="top-bar-container">
+  <mat-toolbar-row>
+    <span class="top-bar-label">{{ "studyMaterials" | translate }}</span>
+  </mat-toolbar-row>
+
+  <div class="top-bar-nav">
+    <button mat-button class="action-btn">
+      <fa-icon [icon]="faRegular.faCalendar"></fa-icon>
+    </button>
+    <button mat-button class="action-btn">
+      <fa-icon [icon]="faRegular.faMessage"></fa-icon>
+    </button>
+    <button mat-button class="action-btn">
+      <fa-icon [icon]="faRegular.faBell"></fa-icon>
+    </button>
+    <button mat-button class="action-btn" [matMenuTriggerFor]="menu">
+      <div class="user-info">
+        <div
+          class="user-image"
+          [ngStyle]="{ 'background-image': 'url(assets/images/user.png)' }"
+        ></div>
+        <div class="user-data">
+          <div class="user-name">{{ "احمد سليمان" }}</div>
+          <div class="user-role">{{ "معلم" }}</div>
+        </div>
+        <div class="user-chevron">
+          <fa-icon [icon]="faSolid.faChevronDown"></fa-icon>
+        </div>
+      </div>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+</div>

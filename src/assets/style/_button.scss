@@ -1,0 +1,12 @@
+button {
+  background-color: transparent;
+  border: none;
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 7px;
+  &.solid-primary {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+}

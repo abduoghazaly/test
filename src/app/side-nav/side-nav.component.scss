@@ -1,0 +1,76 @@
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary-background);
+
+  .logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 15px;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 26px;
+    .cumpany-name {
+      margin-inline: 5px;
+    }
+  }
+
+  .menu-container {
+    flex-grow: 1;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    .menu-item {
+      padding: 10px;
+      margin-inline: 10px;
+      border-radius: 8px;
+      .menu-nav-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        width: 100%;
+        color: var(--secoundry);
+
+        .menu-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 15px;
+          height: 15px;
+          border-radius: 4px;
+          background-color: var(--secoundry);
+          margin-inline: 8px;
+          fa-icon {
+            font-size: 10px;
+            color: var(--primary-background);
+          }
+        }
+      }
+      &.active {
+        background-color: var(--white);
+        .menu-nav-link {
+          color: var(--primary);
+          .menu-icon {
+            background-color: var(--primary);
+            fa-icon {
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .exit-container {
+    padding-block: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

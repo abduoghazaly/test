@@ -1,0 +1,45 @@
+.question-container {
+  border-radius: 15px;
+  background-color: var(--gray);
+  padding: 15px;
+  margin-top: 15px;
+  .question-text {
+    width: 100%;
+    .difficult {
+      display: flex;
+    }
+  }
+
+  .choice-select-container {
+    width: 100%;
+    display: flex;
+    .choice-input-container {
+      flex-grow: 1;
+      .choice-form {
+        display: flex;
+        .choice-input {
+          flex-grow: 1;
+        }
+        .choice-checkbox {
+          min-width: 150px;
+        }
+      }
+    }
+    .choice-radio-container {
+      min-width: 150px;
+      display: flex;
+      flex-direction: column;
+      .choice-radio {
+        min-height: 76px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-bottom: 20px;
+      }
+    }
+  }
+  .action-container {
+    display: flex;
+    padding: 15px;
+  }
+}

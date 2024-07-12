@@ -1,0 +1,7 @@
+.mat-drawer-side {
+  border-right-width: 0 !important;
+}
+
+[dir="rtl"] .mat-drawer-side {
+  border-left-width: 0 !important;
+}
